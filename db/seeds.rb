@@ -6,9 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.destroy_all
+
 Team.destroy_all
 Superhero.destroy_all
+User.destroy_all
 
 DESCRIPTION = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 
@@ -79,5 +80,5 @@ u2 = User.create({
   avatar_url: "https://igcdn-photos-g-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/10891074_323178117881070_413210658_n.jpg"
   })
 
-u1.team << t1
-u2.team << t2
+u1.teams << t1
+u2.teams << t2
