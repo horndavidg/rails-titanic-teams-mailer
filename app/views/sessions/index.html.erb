@@ -1,0 +1,17 @@
+<h1 class="page-header">Titanic Teams</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td class="col-sm-3"><h4><%= link_to "#{team.name}", team_path(team) %></h4></td>
+        <td class="col-sm-7"><%= team.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

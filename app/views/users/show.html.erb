@@ -1,0 +1,8 @@
+<ul class="list-unstyled">
+  <li><%= image_tag("#{current_user.avatar_url}", id:"profile-img", class:"img-rounded img-responsive") %></li>
+  <li><h1><%= current_user.username %></h1></li>
+</ul>
+
+<%= link_to "Edit", edit_user_path(current_user), class:"btn btn-info" %>
+<%= link_to "Delete", current_user, method: :delete, data: {alert: "Are you sure?"},  class:"btn btn-danger" %>
+<%= link_to "View All Teams", user_teams_path(@user), class:"btn btn-success" %>

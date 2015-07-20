@@ -1,0 +1,18 @@
+<%= link_to "Add Superheroes", new_superhero_path, class:"btn btn-primary"%>
+
+<h1 class="page-header">Superheroes!</h1>
+<div class="container-fluid">
+  <div class="row">
+  <% @superheros.each do |superhero| %>
+    <div class="col-sm-3">
+      <div class="thumbnail">
+        <%= image_tag(superhero.image_url) %>
+        <div class="caption">
+          <h3><%= superhero.name %></h3>
+          <p><%= link_to "Show", superhero_path(superhero), class:"btn btn-primary" %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<h1 class="page-header"><i class="fa fa-bolt"></i> <%= @team.name %></h1>
+
+<div class="team-profile container">
+  <ul class="list-unstyled well">
+    <li><%= @team.description %></li>
+    <li><h4>Team members: <%= pluralize(@team.superheros.count, 'member') %></h4></li>
+    <li>
+      <ul>
+        <% if current_user.is_admin? && @team.superheros.length == 0 %>
+          <em><%= link_to "Be first to add a superhero!", new_superhero_path %></em>
+        <% else %>
+          <% @team.superheros.each do |superhero| %>
+            <li><%= link_to superhero.name, superhero_path(superhero) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+  <% if current_user %>
+    <div class="links">
+      <%= link_to "Edit #{@team.name}", edit_team_path(@team), class:"btn btn-info" %>
+      <%= link_to "Delete #{@team.name}", @team, method: :delete, data: {alert: "Are you sure?"},  class:"btn btn-warning" %>
+      <%= link_to "Cancel", user_teams_path(current_user), class:"btn btn-default" %>
+    </div>
+  <% end %>
+</div>

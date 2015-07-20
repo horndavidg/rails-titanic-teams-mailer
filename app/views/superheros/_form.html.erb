@@ -1,0 +1,45 @@
+<%= form_for( @superhero, html:{class:"form-horizontal", role:"form"}) do |f| %>
+	<%= render partial:"shared/errors", locals:{instance:@superhero} %>
+	<div class="form-group">
+		<%= f.label :name, class:"col-md-2"  %>
+		<div class="col-sm-10">
+			<%= f.text_field :name, class:"form-control", autofocus: true %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :height, class:"col-md-2"  %>
+		<div class="col-sm-10">
+			<%= f.number_field :height, step:"0.01", class:"form-control" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :bio, class:"col-md-2"  %>
+		<div class="col-sm-10">
+			<%= f.text_area :bio, class:"form-control" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :image_url, class:"col-md-2"  %>
+		<div class="col-sm-10">
+			<%= f.text_field :image_url, class:"form-control" %>
+		</div>
+	</div>
+
+    <div class="form-group">
+    	<%= f.label :teams, class:"col-md-2"  %>
+    	<div class="col-sm-7">
+	    	<%= f.collection_check_boxes(:team_ids, Team.all, :id, :name) do |b| %>
+	        	<span class="team-selection">
+	            	<%= b.check_box %>
+	            	<%= b.label %>
+	        	</span>
+	    	<% end %>
+    	</div>
+  	</div>
+
+	<div class="actions col-sm-offset-2">
+		<%= f.submit class:"btn btn-primary" %>
+		<%= link_to 'Cancel', superheros_path, class:"btn btn-default" %>
+	</div>
+
+<% end %>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TitanicTeams</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav id="mainNav" class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <%= link_to "SUPERHERO", root_path, class:"navbar-brand" %>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "All Teams", root_path %></li>
+          <li><%= link_to "All Superheroes", superheros_path %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li class="navbar-text"><%= image_tag("#{current_user.avatar_url}", class: "img-rounded avatar") %></li>
+            <li><%= link_to "hello, #{current_user.username}", user_path(current_user)%></li>
+            <li><%= link_to "Sign Out", logout_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Login", login_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="main container">
+    <% flash.each do |key, value| %>
+      <% if key == "notice" %>
+        <%= content_tag :div, value, class: "text-center alert alert-warning" %>
+      <% elsif key == "alert" %>
+        <%= content_tag :div, value, class: "text-center alert alert-danger" %>
+      <% else %>
+        <%= content_tag :div, value, class: "text-center alert alert-success" %>
+      <% end %>
+    <% end %>
+    <%= yield %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<h1 class="page-header"><i class="fa fa-bolt"></i> <%= @superhero.name %></h1>
+
+<div class="team-profile row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <%= image_tag(@superhero.image_url, class:"img-rounded profile-img img-responsive") %>
+      <div class="caption">
+        <% if @superhero.team_ids.length == 0 %>
+          <h3>Affiliations: <%= @superhero.team_ids.length %></h3>
+          <p><%= link_to "Add Superheros to your team!", new_superhero_path %></p>
+        <% else %>
+          <h3>Affiliations: <%= @superhero.team_ids.length %></h3>
+          <% @superhero.team_ids.each do |team| %>
+            <p class="text-primary"><%= @teams.find(team).name %></p>
+          <% end %>
+        <% end %>
+        <p>Bio: <%= @superhero.bio %></p>
+        <p>Height: <%= @superhero.height %></p>
+        <% if current_user.is_admin %>
+          <%= link_to "Edit", edit_superhero_path(@superhero), class:"btn btn-info" %>
+          <%= link_to "Delete", @superhero, method: :delete, data: {alert: "Are you sure?"},  class:"btn btn-warning" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

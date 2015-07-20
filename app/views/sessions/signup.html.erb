@@ -1,0 +1,26 @@
+<div class="col-sm-offset-3">
+  <div class="col-sm-7">
+    <div class="well">
+      <h2 class="text-center">Sign Up for Superhero!</h2><br>
+      <%= form_for @user, url: singup_path do |f| %>
+        <%= render partial: "shared/errors", locals:{instance: @user} %>
+        <div class="form-group">
+          <%= f.label :username, class:"control-label" %>
+          <%= f.text_field :username, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :avatar_url, class:"control-label" %>
+          <%= f.text_field :avatar_url, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, class:"control-label" %>
+          <%= f.password_field :password, class:"form-control" %>
+        </div>
+
+        <%= f.submit "Signup", id:"submit-user", class:"btn btn-block btn-success text-center" %>
+      <% end %>
+    </div>
+  </div>
+</div>

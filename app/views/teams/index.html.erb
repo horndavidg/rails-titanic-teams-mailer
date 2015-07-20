@@ -1,0 +1,22 @@
+<%= link_to "Add Teams", new_user_team_path(current_user), class:"btn btn-primary"%>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Team Founder</th>
+      <th>Superheroes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td class="col-sm-3"><h4><%= link_to "#{team.name}", team_path(team) %></h4></td>
+        <td class="col-sm-7"><%= team.description %></td>
+        <td class="col-sm-7"><%= team.user.username %></td>
+        <td id="heroesCount" class="col-sm-2 text-center"><%= team.superheros.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
