@@ -43,7 +43,7 @@ class SessionsController < ApplicationController
     # session.clear
     session[:user_id] = nil
     flash[:notice] = "Logged out"
-    redirect_to home_path
+    redirect_to login_path
   end
 
   private

@@ -6,11 +6,13 @@ Rails.application.routes.draw do
 
   root 'sessions#index'
   get '/login', to: "sessions#login", as: 'login'
-  get '/singup', to: "sessions#signup", as: 'signup'
+  get '/signup', to: "sessions#signup", as: 'signup'
   post '/login', to: "sessions#attempt_login"
-  post '/singup', to: "sessions#create"
+  post '/signup', to: "sessions#create"
   get '/home', to: "sessions#index", as: 'home'
   delete '/logout', to: "sessions#logout", as: "logout"
+
+  get '/teams', to: "teams#all", as: "all_teams"
 
   resources :users do
     resources :teams, shallow: true

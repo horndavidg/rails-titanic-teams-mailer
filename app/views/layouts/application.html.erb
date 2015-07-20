@@ -15,6 +15,10 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
+          <li><%= link_to "All Teams", all_teams_path %></li>
+          <% if current_user %>
+            <li><%= link_to "Add a New Team", new_user_team_path(current_user) %></li>
+          <% end %>
           <li><%= link_to "All Superheroes", superheros_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

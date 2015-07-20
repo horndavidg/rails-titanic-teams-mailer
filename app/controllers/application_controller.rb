@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
      unless current_user.is_admin
        redirect_to home_path, alert: "You must be an admin to perform that action."
      end
-   end
+  end
 
   # Stop a logged in user from going to the sign up page
   def prevent_login_signup

@@ -1,0 +1,10 @@
+<h1>See all the teams</h1>
+
+<% @teams.each do |team| %>
+<div>
+  Name: <%= team.name %>
+</div>
+<div>
+  Description: <%= team.description %>
+</div>
+<% end %>
