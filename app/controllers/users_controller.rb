@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:show,:edit, :update, :destroy]
+  # before_action only: [:index, :show] do
+  #   prevent_tampering(params[:id].to_i, session[:user_id])
+  # end
 
   def index
     @users = Users.all
@@ -30,7 +34,7 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find params[:id]
   end
-  
+
   def user_params
     params.require(:user).permit(
       :username,
@@ -38,4 +42,14 @@ class UsersController < ApplicationController
       :avatar_url
     )
   end
+
+  def ensure_correct_user
+    # compare some params vs something in the session/current_user
+    unless params[:id].to_i == session[:user_id]
+      redirect_to all_teams_path, alert: "Not Authorized"
+    end
+  end
 end
+
+
+

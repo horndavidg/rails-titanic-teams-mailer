@@ -1,6 +1,7 @@
 class SuperherosController < ApplicationController
   before_action :confirm_logged_in
-	before_action :confirm_admin, only: [:new, :create, :edit, :update, :destroy]
+	# before_action :confirm_admin, only: [:new, :create, :edit, :update, :destroy]
+  before_action :confirm_admin, except: [:index, :show]
 	before_action :set_superhero, only: [:show, :edit, :update, :destroy]
 	before_action :set_team, only: [:show]
 

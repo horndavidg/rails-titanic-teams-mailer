@@ -24,6 +24,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # def prevent_tampering (compare_val_1, compare_val_2 )
+  #   unless compare_val_2 == compare_val_1
+  #     redirect_to all_teams_path, alert: "Not authorized"
+  #   end
+  # end
+
   def current_user
   # Let's not make a database query if we don't need to!
    return unless session[:user_id]

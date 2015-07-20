@@ -43,7 +43,7 @@ class TeamsController < ApplicationController
 
   def destroy
     @team.destroy
-    redirect_to user_teams_path(@user), flash: {success: "#{@team.name} was successfully deleted"}
+    redirect_to user_teams_path(@team.user), flash: {success: "#{@team.name} was successfully deleted"}
   end
 
   private
