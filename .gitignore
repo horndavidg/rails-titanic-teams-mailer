@@ -11,3 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore the secrets folder with keys
+config/secrets.yml

@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
 
   has_secure_password
   validates :username, uniqueness: {case_sensitive: false}, presence: true
-  validates :avatar_url, presence: true
+  validates :email, presence: true
+
+    def generate_password_reset_token!
+    update(password_reset_token: SecureRandom.urlsafe_base64(48))
+    end
 
 end

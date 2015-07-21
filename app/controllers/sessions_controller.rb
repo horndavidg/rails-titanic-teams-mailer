@@ -52,7 +52,8 @@ class SessionsController < ApplicationController
     params.require(:user).permit(
       :username,
       :password,
-      :avatar_url
+      :avatar_url, 
+      :email
     )
   end
 end

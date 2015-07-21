@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+resources :resets, only: [:new, :edit, :create, :update]
+
   get 'users/show'
 
   get 'users/edit'

@@ -41,10 +41,16 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
   gem 'launchy'
+  gem 'shoulda'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
+  gem 'capybara-email'
+  gem 'guard-rspec', require: false
   gem 'spring'
+  gem 'awesome_print'
+  
+
 end
